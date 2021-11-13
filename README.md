@@ -146,10 +146,10 @@ INFO:handler:Your cron function now-pension-scraper-production-cron-scrape ran a
 
 
 # Cost
-This project was desingned to be as buget as possible and so is very cheap to run.
+This project was designed to be as budget as possible and so is very cheap to run.
 - GCP service account: free
 - Google Sheets as Database: free
-- Lambda function: At maximum useage it will run daily. That is 30 invocations per month at <1000 ms per invocation. This is well within AWS free tier of 1 000 000 invokations and 400 000 GB-seconds of compute time per month. Even outside of the free tier the pricing calculator does not even register a cost due to the tiny monthly compute time. So it is either free or pennies per year to run.
+- Lambda function: At maximum useage it will run daily. That is 30 invocations per month at <1000 ms per invocation. This is well within AWS free tier of 1 000 000 invocations and 400 000 GB-seconds of compute time per month. Even outside of the free tier the pricing calculator does not even register a cost due to the tiny monthly compute time. So it is either free or pennies per year to run.
 
 ### Things I would do differently next time
-The only significant change I would make is hosting the script as a Cloud function on GCP rather than a Lambda function on AWS, since it is already using a GCP service account for writting to the sheet. However this is only for tidiness and grouping the architecture, it would not change performance.
+The only significant change I would make is hosting the script as a Cloud function on GCP rather than a Lambda function on AWS, since it is already using a GCP service account for writing to the sheet. However this is only for tidiness and grouping the architecture, it would not change performance.
