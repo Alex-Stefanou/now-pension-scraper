@@ -1,0 +1,10 @@
+.serverless
+__pycache__
+node_modules
+package-lock.json
+*.pyc
+*.pyo
+*.drawio
+
+GCP_service_credentials.json
+.env

@@ -1,0 +1,10 @@
+{
+  "name": "now-pension-scraper",
+  "version": "1.0.0",
+  "description": "function to scrape now:pensions for pension value",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "serverless-python-requirements": "^5.1.1"
+  }
+}

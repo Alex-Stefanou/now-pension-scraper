@@ -1,0 +1,20 @@
+service: now-pension-scraper
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: production
+  region: eu-west-1
+  lambdaHashingVersion: 20201221
+
+plugins:
+  - serverless-python-requirements
+
+functions:
+  cron-scrape:
+    handler: handler.run
+    events:
+      # Invoke Lambda function 4am everyday
+      - schedule: cron(0 4 * * ? *)
