@@ -3,7 +3,7 @@
 
 ## Motivation
 [NOW: Pensions](https://www.nowpensions.com/) is a UK workplace pension provider. Unfortunately their online dashboard is feature poor.
- - No clear idication of when the most recent contribution arrived.
+ - No clear indication of when the most recent contribution arrived.
  - No historical tracking of pension value so you can monitor your pension's growth.
 
 It really is just a page with a number; the current value of your pension.
@@ -11,20 +11,20 @@ It really is just a page with a number; the current value of your pension.
 Therefore I created this project to scrape the dashboard daily for my pension value and save it to be displayed graphically.
 
 ## Solution
-This project is an Python Lambda function configured with the [Serverless Framework](https://www.serverless.com/) and triggered by a cron job. Scraped data is then writen to a Google Sheet.
+This project is a Python Lambda function configured with the [Serverless Framework](https://www.serverless.com/) and triggered by a cron job. Scraped data is then writen to a Google Sheet.
 
 ![Architecture Diagram](./assets/architecture_diagram.png?raw=true "Architecture Diagram")
 
 ### Why Python?
-I wanted to practice. But also I wanted it to be a simple and light weight.
+I wanted to practice. But also I wanted it to be simple and light weight.
 
 ### Why Serverless?
 This project lends itself perfectly to serverless functions.
  - Running a single function once a day is magnitudes cheaper than an always on instance.
- - No need for maintenance and will always run (as opposed to local hosting which would stop when my computer is off)
+ - No need for maintenance and will always run (as opposed to local hosting which would stop when my computer is off).
 
 ### Why use Google Sheets as a database?
-Although not it's intended purpose Google Sheets suits this project well.
+Although not its intended purpose Google Sheets suits this project well.
 - Free
 - Always on, cloud storage will always be able to keep up with the serverless function.
 - Built in data processing and graphing.
