@@ -1,5 +1,6 @@
 # 'NOW: Pensions' Scraper
 
+Alex Stefanou 12/11/2021
 
 ## Motivation
 [NOW: Pensions](https://www.nowpensions.com/) is a UK workplace pension provider. Unfortunately their online dashboard is feature poor.
@@ -77,13 +78,13 @@ Lastly from the URL of your sheet extract the Sheet ID. This is the code that fo
 ### Environment variables
 In order to keep login credentials safe they are stored in a .env file. To configure your own file, duplicate the .env.example file that comes with this project. Rename it to `.env` and ensure it is still in the root level of the project. Fill in the three blank fields:
  - NP_USERNAME - The email address you would use to sign into your Now:pensions account.
- - NP_USERNAME - The password you would use to sign into your Now:pensions account.
+ - NP_PASSWORD - The password you would use to sign into your Now:pensions account.
  - SHEET_ID - The ID of the google sheet you obtained in the previous step.
 
 ### Serverless.yml
 Lastly you can optionally configure the `serverless.yml` found in the root of the project. Options you may wish to configure are:
 - region - (Line 9) The aws region that the Lambda function will run on (this may affect pricing).
-- schedule - (Line 20) The frequency with which the job will run (will affect pricing if run too frequently). There is no need to run the function more than once per day.
+- schedule - (Line 20) The frequency with which the job will run (will affect pricing if run too frequently). There is no need to run the function more than once per week.
 
 ## Deployment
 
@@ -144,12 +145,22 @@ After invocation, you should see output similar to:
 INFO:handler:Your cron function now-pension-scraper-production-cron-scrape ran at 15:02:43.203145
 ```
 
+# Other notes
 
-# Cost
+
+## Cost
 This project was designed to be as budget as possible and so is very cheap to run.
 - GCP service account: free
 - Google Sheets as Database: free
-- Lambda function: At maximum useage it will run daily. That is 30 invocations per month at <1000 ms per invocation. This is well within AWS free tier of 1 000 000 invocations and 400 000 GB-seconds of compute time per month. Even outside of the free tier the pricing calculator does not even register a cost due to the tiny monthly compute time. So it is either free or pennies per year to run.
+- Lambda function: At current usage the function runs weekly; Four invocations per month at <1000 ms per invocation. This is well within AWS free tier of 1 000 000 invocations and 400 000 GB-seconds of compute time per month. Even outside of the free tier the pricing calculator does not even register a cost due to the tiny monthly compute time. So it is either free or pennies per year to run.
 
-### Things I would do differently next time
+## Things I would do differently next time
 The only significant change I would make is hosting the script as a Cloud function on GCP rather than a Lambda function on AWS, since it is already using a GCP service account for writing to the sheet. However this is only for tidiness and grouping the architecture, it would not change performance.
+
+# Updates
+
+## Patch 20/11/21
+After 2 weeks of data collection it is apparent that Now:pensions updates the pension value ever Friday. Therefore, the Lambda function does not need to be triggered daily, weekly is adequate. Also updated sheet to plot value against the `last_updated` date provided by Now:pensions.
+ - Cron schedule changed from `daily at 4am` to `every Sunday at 4am`.
+ - Changed the columns that each value is written to.
+ - Updated Google Sheet template to receive data in different columns, and plot value against date from Now:pensions.

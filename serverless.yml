@@ -16,5 +16,5 @@ functions:
   cron-scrape:
     handler: handler.run
     events:
-      # Invoke Lambda function 4am everyday
-      - schedule: cron(0 4 * * ? *)
+      # Invoke Lambda function 4am every Sunday (Now:pensions updates value every Friday)
+      - schedule: cron(0 4 ? * SUN *)

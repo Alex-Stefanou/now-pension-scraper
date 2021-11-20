@@ -43,9 +43,9 @@ def run(event, context):
     sheet2 = sheet[1]
 
     next_row = int(sheet2.cell('B1').value)
-    sheet1.update_value(f'A{next_row}', current_date.strftime('%d/%m/%Y'))
-    sheet1.update_value(f'B{next_row}', pension_value)
-    sheet1.update_value(f'C{next_row}', last_updated.strftime('%d/%m/%Y'))
+    sheet1.update_value(f'A{next_row}', pension_value)
+    sheet1.update_value(f'B{next_row}', last_updated.strftime('%d/%m/%Y'))
+    sheet1.update_value(f'C{next_row}', current_date.strftime('%d/%m/%Y'))
 
     next_row += 1
     sheet2.update_value('B1', str(next_row))
