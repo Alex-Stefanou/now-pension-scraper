@@ -160,7 +160,7 @@ The only significant change I would make is hosting the script as a Cloud functi
 # Updates
 
 ## Patch 20/11/21
-After 2 weeks of data collection it is apparent that Now:pensions updates the pension value ever Friday. Therefore, the Lambda function does not need to be triggered daily, weekly is adequate. Also updated sheet to plot value against the `last_updated` date provided by Now:pensions.
+After 2 weeks of data collection it is apparent that Now:pensions updates the pension value every Friday. Therefore, the Lambda function does not need to be triggered daily, weekly is adequate. Also updated sheet to plot value against the `last_updated` date provided by Now:pensions.
  - Cron schedule changed from `daily at 4am` to `every Sunday at 4am`.
  - Changed the columns that each value is written to.
  - Updated Google Sheet template to receive data in different columns, and plot value against date from Now:pensions.
