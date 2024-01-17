@@ -17,7 +17,7 @@ This project is a Python Lambda function configured with the [Serverless Framewo
 ![Architecture Diagram](./assets/architecture_diagram.png?raw=true "Architecture Diagram")
 
 ### Why Python?
-I wanted to practice. But also I wanted it to be simple and light weight.
+I wanted to practice. But also I wanted it to be simple with minimal boilerplate.
 
 ### Why Serverless?
 This project lends itself perfectly to serverless functions.
